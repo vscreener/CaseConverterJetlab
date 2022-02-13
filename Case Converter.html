@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Case Converter</title>
+</head>
+<body>
+<style>
+    .title {
+        text-align: center;
+        text-transform: uppercase;
+        font-family:"Times New Roman", Times, serif;
+    }
+    .textbox {
+        text-align: center;
+        font-family:"Times New Roman", Times, serif;
+    }
+    .Buttons {
+        text-align: center;
+    }
+    #upper-case, #lower-case, #proper-case, #sentence-case {
+        background-image: linear-gradient(to right, #2c3e50, #4ca1af);
+        color: white;
+        opacity:0.8;
+        border-radius: 8px;
+        font-family:"Times New Roman", Times, serif;
+    }
+     * {
+        background-color: aliceblue;
+    }
+</style>
+<div>
+    <p class="title"><b>Case Converter</b></p>
+</div>
+<div class="textbox">
+    <textarea id="area" name="convertable" rows="10" cols="50"></textarea>
+</div>
+<div class="Buttons">
+    <button id="upper-case" onclick="UpperCase()">Upper Case</button>
+    <button id="lower-case" onclick="LowerCase()">Lower Case</button>
+    <button id="proper-case" onclick="ProperCase()">Proper Case</button>
+    <button id="sentence-case" onclick="SentenceCase()">Sentence Case</button>
+</div>
+<script>
+    function UpperCase() {
+        let AreaValue = document.getElementById("area").value;
+        document.getElementById('area').value = AreaValue.toUpperCase();
+     }
+     function LowerCase() {
+         let AreaValue = document.getElementById("area").value;
+         document.getElementById('area').value = AreaValue.toLowerCase();
+     }
+     function ProperCase() {
+         let AreaValue = document.getElementById("area").value;
+         let AreaValueSplit = AreaValue.split(" ");
+         for (let i = 0; i < AreaValueSplit.length; i++) {
+             AreaValueSplit[i] = AreaValueSplit[i][0].toUpperCase() + AreaValueSplit[i].substr(1);
+         }
+         document.getElementById('area').value = AreaValueSplit.join(" ");
+     }
+     function SentenceCase() {
+         let AreaValue = document.getElementById("area").value.toLowerCase();
+         let AreaValueSplit = AreaValue.split(". ");
+         for (let i = 0; i < AreaValueSplit.length; i++) {
+             AreaValueSplit[i] = AreaValueSplit[i][0].toUpperCase() + AreaValueSplit[i].substr(1);
+         }
+         let stringyArea = AreaValueSplit.join(". ");
+         document.getElementById('area').value = stringyArea;
+     }
+</script>
+</body>
+</html>
